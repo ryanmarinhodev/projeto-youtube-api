@@ -3,9 +3,9 @@ import {
   ButtonIcon,
   Container,
   MenuItem
-} from './style'
-import Inicio from './icons/inicio.png'
-import MenuContext from "../../contexts/menuContext";
+} from '../style'
+import Inicio from '../icons/inicio.png'
+import MenuContext from "../../../contexts/menuContext";
 
 
 
@@ -17,6 +17,7 @@ function HomeMenu() {
 
 const itens = [
   { id: 1, label: "Início", icon: Inicio },
+  { id: 2, label2: "Início2", icon: Inicio },
 ];
 
   return (
@@ -27,6 +28,10 @@ const itens = [
           <MenuItem key={item.id} openMenu={openMenu}>
             <ButtonIcon alt="" src={item.icon} />
             <span>{item.label}</span>
+            <span>{item.label2}</span>
+            <span>{item.label2}</span>
+            <span>{item.label2}</span>
+            <span>{item.label2}</span>
           </MenuItem>
         ))}
       </div>
