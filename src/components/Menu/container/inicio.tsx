@@ -13,6 +13,7 @@ import Biblioteca from '../icons/biblioteca.png'
 import { useNavigate } from "react-router-dom";
 
 
+
 const itens = [
   { id: 1, label: "Início", icon: Inicio, link: '/' }, // Alterado para '/'
   { id: 2, label: "Shorts", icon: Shorts, link: '/shorts' },
