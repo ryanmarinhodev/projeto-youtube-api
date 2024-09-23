@@ -4,7 +4,7 @@ import {
  
 } from './style'
 import MenuContext from "../../contexts/menuContext";
-import MenuOne from "./container/home";
+import MenuOne from "./container/inicio";
 
 
 

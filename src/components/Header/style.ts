@@ -10,6 +10,8 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  position: sticky;
+  top: 0px;
 `;
 
 export const LogoContainer = styled.div `
