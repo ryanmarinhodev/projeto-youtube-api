@@ -43,4 +43,12 @@ function App() {
   );
 }
 
+
+// Deixar a tela de login estilizada
+// Implementar um drop down menu com react 
+// Criar a tela e integração para cadastro de usuário (enviar nome, e-mail e senha. Mostrando alert quando um usuario se cadastrar)
+// Criar a tela e integração para cadastro de vídeos
+// Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de 
+// pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto)
+
 export default App;

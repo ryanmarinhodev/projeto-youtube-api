@@ -25,7 +25,7 @@ function Header() {
   console.log("Estado do openMenu:", openMenu);
   const navigate = useNavigate();
   
-  const { login } = useContext(UserContext)
+  const { login, logOut } = useContext(UserContext)
 
   return (
     <Container>
@@ -61,7 +61,10 @@ function Header() {
         </ButtonContainer>
 
         {login ? (
+          <>
           <ButtonContainer margin="0 0 0 10px">R</ButtonContainer>
+          <span onClick={() => logOut()}>Sair</span>
+          </>
         ) : (
           <button onClick={() => navigate("/login")}>Fazer Login</button>
         )}
