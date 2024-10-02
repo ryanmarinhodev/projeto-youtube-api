@@ -10,17 +10,27 @@ export const UserStorage = ({ children }: any) => {
 
 
     const getUser = (token: string) => {
-        api.get('/user/get-user', {headers:{Authorization: token}}).then(({ data }) => {
-            setUser(data.user);
-            setLogin(true)
-        }).catch((error) => {
-            console.log('Usuário não autenticado', error)
+        api.get('/user/get-user', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
+        .then(({ data }) => {
+            setUser(data.user);
+            setLogin(true);
+        })
+        .catch((error) => {
+            console.log('Usuário não autenticado', error);
+        });
     }
+    
 
     useEffect(() => {
-        getUser(token)
-    }, [token])
+        if (token) {
+            getUser(token);
+        }
+    }, [token]);
+    
 
 
 

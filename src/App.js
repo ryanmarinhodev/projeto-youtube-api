@@ -10,8 +10,12 @@ import { UserStorage } from "./contexts/contextApi";
 import Login from "./login";
 
 
+
 function App() {
   return (
+    
+
+
     <UserStorage>
       <BrowserRouter>
         <div className="App">
@@ -44,11 +48,11 @@ function App() {
 }
 
 
-// Deixar a tela de login estilizada
-// Implementar um drop down menu com react 
-// Criar a tela e integração para cadastro de usuário (enviar nome, e-mail e senha. Mostrando alert quando um usuario se cadastrar)
-// Criar a tela e integração para cadastro de vídeos
+// Deixar a tela de login estilizada 2 dias ()))())()
+// Implementar um drop down menu com react 3-4 dias - quando clicado na logo do canal
+// Criar a tela e integração para cadastro de usuário (enviar nome, e-mail e senha. Mostrando alert quando um usuario se cadastrar) 4 dias
+// Criar a tela e integração para cadastro de vídeos 5 dias
 // Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de 
-// pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto)
+// pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto) 5 dias
 
 export default App;
