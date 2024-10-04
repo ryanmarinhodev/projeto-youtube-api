@@ -15,18 +15,18 @@ function Login() {
     <Container>
       <LoginBox>
         <Logo src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" />
-        <Title>Sign in</Title>
-        <Subtitle>to continue to your application</Subtitle>
+        <Title>Fazer Login</Title>
+        <Subtitle>Prosseguir no YouTube</Subtitle>
 
         <Input 
           type="email" 
-          placeholder="Email or phone"
+          placeholder="E-mail"
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
         />
         <Input 
           type="password" 
-          placeholder="Password"
+          placeholder="Senha"
           value={password} 
           onChange={(e) => setPassword(e.target.value)}
         />
