@@ -9,6 +9,7 @@ import Shorts from './pages/Shorts';
 import { UserStorage } from './contexts/contextApi';
 import Login from './login';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateUser from './login/createUser';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           {/* Rota de Login fora do contexto de Menu */}
           <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<CreateUser />} />
 
           {/* Outras rotas com contexto de Menu */}
           <Route
