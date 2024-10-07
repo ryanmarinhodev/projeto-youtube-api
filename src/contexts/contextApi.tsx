@@ -55,7 +55,6 @@ export const UserStorage = ({ children }: any) => {
         localStorage.setItem('token', data.token); // Armazena o token
         setToken(data.token); // Atualiza o estado do token
         getUser(data.token); // Chama a função para buscar os dados do usuário
-        alert('Usuário conectado');
       })
       .catch((error) => {
         alert('Dados incorretos ou inexistentes');
