@@ -1,4 +1,6 @@
-import { Container,
+import React, { useState, useContext } from 'react';
+import {
+  Container,
   LogoContainer,
   ButtonContainer,
   ButtonIcon,
@@ -7,25 +9,30 @@ import { Container,
   SearchInput,
   SearchButton,
   HeaderButton,
-} from "./style";
-import HamburguerIcon from '../../assets/hamburger.png'
-import Logo from '../../assets/YouTube-Logo.png'
-import Lupa from '../../assets/search.png'
-import Microfone from '../../assets/microfone-gravador.png'
-import VideoIcon from '../../assets/video.png'
-import NotificationIcon from '../../assets/sino.png'
-import { useContext } from "react";
-import MenuContext from "../../contexts/menuContext";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/contextApi";
-
+  LoginButton,
+} from './style';
+import HamburguerIcon from '../../assets/hamburger.png';
+import Logo from '../../assets/YouTube-Logo.png';
+import Lupa from '../../assets/search.png';
+import Microfone from '../../assets/microfone-gravador.png';
+import VideoIcon from '../../assets/video.png';
+import NotificationIcon from '../../assets/sino.png';
+import { useNavigate } from 'react-router-dom';
+import MenuContext from '../../contexts/menuContext';
+import { UserContext } from '../../contexts/contextApi';
+import DropDownMenu from '../../login/dropDownMenu';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
-  console.log("Estado do openMenu:", openMenu);
+  const { login, logOut } = useContext(UserContext);
   const navigate = useNavigate();
-  
-  const { login, logOut } = useContext(UserContext)
+
+  // Estado para controlar o DropDown
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <Container>
@@ -37,7 +44,7 @@ function Header() {
             src={HamburguerIcon}
           />
         </ButtonContainer>
-        <img style={{ cursor: "pointer", width: "100px" }} alt="" src={Logo} />
+        <img style={{ cursor: 'pointer', width: '100px' }} alt="" src={Logo} />
       </LogoContainer>
 
       <SearchContainer>
@@ -62,16 +69,20 @@ function Header() {
 
         {login ? (
           <>
-          <ButtonContainer margin="0 0 0 10px">R</ButtonContainer>
-          <span onClick={() => logOut()}>Sair</span>
+            <ButtonContainer margin="0 0 0 10px">
+              <span onClick={handleToggle}>R</span>
+              <DropDownMenu isOpen={isOpen} logOut={logOut} />
+            </ButtonContainer>
+            <span onClick={() => logOut()}>Sair</span>
           </>
         ) : (
-          <button onClick={() => navigate("/login")}>Fazer Login</button>
+          <LoginButton onClick={() => navigate('/login')}>
+            Fazer Login
+          </LoginButton>
         )}
       </HeaderButton>
     </Container>
   );
-    
 }
 
 export default Header;

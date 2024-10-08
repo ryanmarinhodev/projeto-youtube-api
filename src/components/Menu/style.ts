@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div<{ openMenu: boolean }>`
   width: ${({ openMenu }) => (openMenu ? '250px' : '100px')};
@@ -13,14 +13,13 @@ export const Container = styled.div<{ openMenu: boolean }>`
   transition: width 0.3s ease;
   position: static;
   top: 55px;
-
 `;
 
 export const MenuItem = styled.div<{ openMenu: boolean }>`
   width: 98%;
   display: flex;
   align-items: center;
-  margin: 0.2rem 0; 
+  margin: 0.2rem 0;
   min-height: ${({ openMenu }) => (openMenu ? '45px' : '70px')};
   border-radius: 10px;
   cursor: pointer;
@@ -28,14 +27,13 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
   box-sizing: border-box;
   flex-direction: ${({ openMenu }) => (openMenu ? 'row' : 'column')};
   justify-content: ${({ openMenu }) => (openMenu ? 'flex-start' : 'center')};
- 
-  
+
   span {
     font-weight: ${({ openMenu }) => (openMenu ? '600' : '400')};
     margin-left: ${({ openMenu }) => (openMenu ? '20px' : '0px')};
     font-size: ${({ openMenu }) => (openMenu ? '16px' : '12px')};
   }
-  
+
   &:hover {
     background-color: #f2f2f2;
   }
@@ -49,7 +47,7 @@ export const Divider = styled.hr<{ openMenu: boolean }>`
   border: none;
   border-top: 1px solid #ccc;
   margin: 1rem 0;
-  width: 90%; 
+  width: 90%;
   justify-content: center;
-  display: ${({ openMenu }) => (openMenu ? 'flex' : 'none')};
+  display: ${({ openMenu }) => (openMenu ? 'flex' : 'none')};
 `;
