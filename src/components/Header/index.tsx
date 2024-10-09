@@ -20,7 +20,7 @@ import NotificationIcon from '../../assets/sino.png';
 import { useNavigate } from 'react-router-dom';
 import MenuContext from '../../contexts/menuContext';
 import { UserContext } from '../../contexts/contextApi';
-import DropDownMenu from '../../login/dropDownMenu';
+import DropDownMenu from '../../login/dropDownMenu/index';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
@@ -32,6 +32,7 @@ function Header() {
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
+    console.log('Toggle funcionando', !isOpen);
   };
 
   return (
@@ -69,11 +70,12 @@ function Header() {
 
         {login ? (
           <>
-            <ButtonContainer margin="0 0 0 10px">
-              <span onClick={handleToggle}>R</span>
-              <DropDownMenu isOpen={isOpen} logOut={logOut} />
-            </ButtonContainer>
-            <span onClick={() => logOut()}>Sair</span>
+            {login && (
+              <ButtonContainer margin="0 0 0 10px" onClick={handleToggle}>
+                <span onClick={handleToggle}>R</span>
+                {isOpen && <DropDownMenu isOpen={isOpen} logOut={logOut} />}
+              </ButtonContainer>
+            )}
           </>
         ) : (
           <LoginButton onClick={() => navigate('/login')}>

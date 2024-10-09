@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { DropDownMenuContainer } from './styles';
+import { DropDownMenuContainer, ProfileLetter, MenuItem, Icon } from './styles';
 import { UserContext } from '../../contexts/contextApi';
+import logOutImage from '../../assets/logout.png';
+import Videos from '../../components/Menu/icons/video (1).png';
 
 interface DropDownMenuProps {
   isOpen: boolean;
@@ -12,14 +14,28 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ isOpen, logOut }) => {
 
   if (!login) return null;
 
-  console.log('isOpen value: ', isOpen); // Adicione logs para verificar
+  // Pegando a primeira letra do nome para o perfil
+  const firstLetter = userName ? userName.charAt(0).toUpperCase() : '';
 
   return (
-    <DropDownMenuContainer isOpen={isOpen}>
+    <DropDownMenuContainer className={isOpen ? 'open' : 'closed'}>
       <ul>
-        <li>{userName}</li>
-        <li>Seus Vídeos</li>
-        <li onClick={logOut}>Sair</li>
+        {/* Letra do Nome como Avatar */}
+        <ProfileLetter>{firstLetter}</ProfileLetter>
+
+        {/* Ícones e Itens de Menu */}
+        <MenuItem>
+          <Icon>
+            <img src={Videos} alt="Seus Vídeos" /> {/* Ícone de Seus Vídeos */}
+          </Icon>
+          <span>Seus Vídeos</span>
+        </MenuItem>
+        <MenuItem onClick={logOut}>
+          <Icon>
+            <img src={logOutImage} alt="Sair" /> {/* Ícone de Sair */}
+          </Icon>
+          <span>Sair</span>
+        </MenuItem>
       </ul>
     </DropDownMenuContainer>
   );
