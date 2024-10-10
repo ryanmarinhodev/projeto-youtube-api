@@ -70,8 +70,6 @@ function App() {
 // Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de
 // pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto) 5 dias
 
-// a fazer: tirar a camera e o sino quando o usuário não estiver logado, aparecer somente quando logar.
-// colocar a logo de fazer login (dentro da assets)
 //ajeitar o dropdown
 
 export default App;

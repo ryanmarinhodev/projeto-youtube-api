@@ -43,7 +43,7 @@ export const UserStorage = ({ children }: any) => {
     localStorage.removeItem('token');
     setLogin(false);
     setUser({});
-    navigte('/login');
+    navigte('/');
   };
 
   const handleLogin = (email: string, password: string) => {

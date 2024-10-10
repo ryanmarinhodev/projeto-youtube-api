@@ -39,6 +39,11 @@ export const CreateUserInput = styled.input`
   border-radius: 4px;
   font-size: 16px;
   box-sizing: border-box;
+
+  &:focus {
+    border-color: #065fd4;
+    outline: none;
+  }
 `;
 
 export const PasswordInfo = styled.p`

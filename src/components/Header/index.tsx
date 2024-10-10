@@ -10,6 +10,7 @@ import {
   SearchButton,
   HeaderButton,
   LoginButton,
+  ButtonGroup,
 } from './style';
 import HamburguerIcon from '../../assets/hamburger.png';
 import Logo from '../../assets/YouTube-Logo.png';
@@ -21,6 +22,7 @@ import { useNavigate } from 'react-router-dom';
 import MenuContext from '../../contexts/menuContext';
 import { UserContext } from '../../contexts/contextApi';
 import DropDownMenu from '../../login/dropDownMenu/index';
+import LoginImg from '../../assets/login-icon.png';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
@@ -38,7 +40,10 @@ function Header() {
   return (
     <Container>
       <LogoContainer>
-        <ButtonContainer margin="0 10px 0 0">
+        <ButtonContainer
+          margin="0 10px 0 0"
+          onClick={() => setOpenMenu(!openMenu)}
+        >
           <ButtonIcon
             onClick={() => setOpenMenu(!openMenu)}
             alt=""
@@ -48,7 +53,7 @@ function Header() {
         <img style={{ cursor: 'pointer', width: '100px' }} alt="" src={Logo} />
       </LogoContainer>
 
-      <SearchContainer>
+      <SearchContainer login={login}>
         <SearchInputContainer>
           <SearchInput placeholder="Pesquisar" />
         </SearchInputContainer>
@@ -60,29 +65,31 @@ function Header() {
         </ButtonContainer>
       </SearchContainer>
 
-      <HeaderButton>
-        <ButtonContainer margin="0 0 0 10px">
-          <ButtonIcon alt="" src={VideoIcon} />
-        </ButtonContainer>
-        <ButtonContainer margin="0 0 0 10px">
-          <ButtonIcon alt="" src={NotificationIcon} />
-        </ButtonContainer>
+      {/* Novo contêiner para agrupar os botões */}
+      <ButtonGroup>
+        <HeaderButton login={login}>
+          <ButtonContainer margin="0 0 0 10px">
+            <ButtonIcon alt="" src={VideoIcon} />
+          </ButtonContainer>
+          <ButtonContainer margin="0 0 0 10px">
+            <ButtonIcon alt="" src={NotificationIcon} />
+          </ButtonContainer>
 
-        {login ? (
-          <>
-            {login && (
-              <ButtonContainer margin="0 0 0 10px" onClick={handleToggle}>
-                <span onClick={handleToggle}>R</span>
-                {isOpen && <DropDownMenu isOpen={isOpen} logOut={logOut} />}
-              </ButtonContainer>
-            )}
-          </>
-        ) : (
+          {login && (
+            <ButtonContainer margin="0 0 0 10px" onClick={handleToggle}>
+              <span onClick={handleToggle}>R</span>
+              {isOpen && <DropDownMenu isOpen={isOpen} logOut={logOut} />}
+            </ButtonContainer>
+          )}
+        </HeaderButton>
+
+        {/* Botão de Login fora do HeaderButton */}
+        {!login && (
           <LoginButton onClick={() => navigate('/login')}>
-            Fazer Login
+            <img src={LoginImg} alt="Imagem de login" /> Fazer Login
           </LoginButton>
         )}
-      </HeaderButton>
+      </ButtonGroup>
     </Container>
   );
 }

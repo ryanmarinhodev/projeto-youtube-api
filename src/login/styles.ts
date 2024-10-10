@@ -43,6 +43,11 @@ export const Input = styled.input`
   border: 1px solid #dadce0;
   border-radius: 4px;
   font-size: 16px;
+
+  &:focus {
+    border-color: #065fd4;
+    outline: none;
+  }
 `;
 
 export const Button = styled.button`

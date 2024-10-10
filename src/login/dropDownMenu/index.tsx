@@ -26,13 +26,13 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ isOpen, logOut }) => {
         {/* Ícones e Itens de Menu */}
         <MenuItem>
           <Icon>
-            <img src={Videos} alt="Seus Vídeos" /> {/* Ícone de Seus Vídeos */}
+            <img src={Videos} alt="Seus Vídeos" />
           </Icon>
           <span>Seus Vídeos</span>
         </MenuItem>
         <MenuItem onClick={logOut}>
           <Icon>
-            <img src={logOutImage} alt="Sair" /> {/* Ícone de Sair */}
+            <img src={logOutImage} alt="Sair" />
           </Icon>
           <span>Sair</span>
         </MenuItem>

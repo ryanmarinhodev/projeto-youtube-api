@@ -38,8 +38,10 @@ export const ButtonIcon = styled.img`
   width: 20px;
 `;
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.div<{ login: boolean }>`
   display: flex;
+  justify-content: center;
+  flex-grow: 1;
 `;
 
 export const SearchInputContainer = styled.div`
@@ -71,14 +73,14 @@ export const SearchButton = styled.div`
   cursor: pointer;
 `;
 
-export const HeaderButton = styled.div`
+export const HeaderButton = styled.div<{ login: boolean }>`
   width: 200px;
-  display: flex;
+  display: ${({ login }) => (login ? 'flex' : 'none')};
 `;
 
 export const LoginButton = styled.button`
   display: flex;
-  width: 120px;
+  width: 140px;
   align-items: center;
   background-color: white;
   color: #065fd4; /* Azul típico do YouTube */
@@ -86,7 +88,7 @@ export const LoginButton = styled.button`
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 50px; /* Borda arredondada */
+  border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   outline: none;
@@ -101,5 +103,13 @@ export const LoginButton = styled.button`
 
   img {
     margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+    width: 20px;
+    height: 20px;
   }
+`;
+
+// Novo estilo para o contêiner que agrupa os botões
+export const ButtonGroup = styled.div`
+  display: flex; /* Usar flexbox para alinhar os botões corretamente */
+  align-items: center; /* Alinhar verticalmente os botões */
 `;
