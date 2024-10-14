@@ -67,6 +67,6 @@ function App() {
 // Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de
 // pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto) 5 dias
 
-//ajeitar o dropdown nome ao lado
+//consumir a api do youtube via axios na pasta Home
 
 export default App;
