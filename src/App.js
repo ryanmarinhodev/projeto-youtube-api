@@ -63,10 +63,4 @@ function App() {
   );
 }
 
-// Criar a tela e integração para cadastro de vídeos 5 dias
-// Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de
-// pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto) 5 dias
-
-//consumir a api do youtube via axios na pasta Home
-
 export default App;

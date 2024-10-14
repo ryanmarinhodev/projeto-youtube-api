@@ -1,20 +1,37 @@
-import { ChannelImage, Container, ImageBanner, TextCard, TextContainer, Title, TitleContainer } from "./style";
+import {
+  ChannelImage,
+  Container,
+  ImageBanner,
+  TextCard,
+  TextContainer,
+  Title,
+  TitleContainer,
+} from './style';
 
+interface VideoComponentProps {
+  video: {
+    title: string;
+    channel: string;
+    views: string;
+    time: string;
+    image: string;
+  };
+}
 
-function VideoComponent({ video }: any) {
+function VideoComponent({ video }: VideoComponentProps) {
   return (
     <Container>
-        <ImageBanner src="https://i.ytimg.com/vi/tI55Zu9uZEM/maxresdefault.jpg" />
-        <TitleContainer>
-            <ChannelImage>
-                RM
-            </ChannelImage>
-            <TextContainer>
-                <Title>{video.title}</Title>
-                <TextCard>{video.channel}</TextCard>
-                  <TextCard>{video.viws} visulizações - {video.time}</TextCard>
-            </TextContainer>
-        </TitleContainer>
+      <ImageBanner src={video.image} alt={`Thumbnail de ${video.title}`} />
+      <TitleContainer>
+        <ChannelImage>RM</ChannelImage>
+        <TextContainer>
+          <Title>{video.title}</Title>
+          <TextCard>{video.channel}</TextCard>
+          <TextCard>
+            {video.views} visualizações - {video.time}
+          </TextCard>
+        </TextContainer>
+      </TitleContainer>
     </Container>
   );
 }
