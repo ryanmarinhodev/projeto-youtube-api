@@ -26,7 +26,7 @@ import LoginImg from '../../assets/login-icon.png';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
-  const { login, logOut } = useContext(UserContext);
+  const { login, logOut, user } = useContext(UserContext);
   const navigate = useNavigate();
 
   // Estado para controlar o DropDown
@@ -36,6 +36,8 @@ function Header() {
     setIsOpen(!isOpen);
     console.log('Toggle funcionando', !isOpen);
   };
+
+  const firstLetter = user?.nome ? user.nome.charAt(0).toUpperCase() : '';
 
   return (
     <Container>
@@ -77,7 +79,7 @@ function Header() {
 
           {login && (
             <ButtonContainer margin="0 0 0 10px" onClick={handleToggle}>
-              <span onClick={handleToggle}>R</span>
+              <span onClick={handleToggle}>{firstLetter}</span>
               {isOpen && <DropDownMenu isOpen={isOpen} logOut={logOut} />}
             </ButtonContainer>
           )}

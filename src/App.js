@@ -63,13 +63,10 @@ function App() {
   );
 }
 
-// Deixar a tela de login estilizada 2 dias ()))())()
-// Implementar um drop down menu com react 3-4 dias - quando clicado na logo do canal
-// Criar a tela Mostrando alert quando um usuario se cadastrar) 4 dias (((((((())))))))
 // Criar a tela e integração para cadastro de vídeos 5 dias
 // Implementação de pesquisa (pegar o valor do input de pesquisa, fazer a requisição para o método de
 // pequisa daquela api de estudos, no retorno dos videos da api, substitui no estado desse projeto) 5 dias
 
-//ajeitar o dropdown
+//ajeitar o dropdown nome ao lado
 
 export default App;

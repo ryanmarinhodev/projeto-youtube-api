@@ -6,16 +6,16 @@ export const UserContext = createContext({} as any);
 
 export const UserStorage = ({ children }: any) => {
   const [login, setLogin] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<any>({}); // Tipo atualizado para garantir que você possa armazenar o nome corretamente
   const [token, setToken] = useState(localStorage.getItem('token') as string);
-  const navigte = useNavigate();
+  const navigate = useNavigate();
 
-  //Mudança da rota após login estar correto
+  // Mudança da rota após login estar correto
   useEffect(() => {
     if (login) {
-      navigte('/');
+      navigate('/');
     }
-  }, [login, navigte]);
+  }, [login, navigate]);
 
   const getUser = (token: string) => {
     api
@@ -25,7 +25,8 @@ export const UserStorage = ({ children }: any) => {
         },
       })
       .then(({ data }) => {
-        setUser(data.user);
+        setUser(data.user); // Salvando o objeto completo do usuário, incluindo o nome
+        console.log('Usuario retornado da api', data.user);
         setLogin(true);
       })
       .catch((error) => {
@@ -43,11 +44,11 @@ export const UserStorage = ({ children }: any) => {
     localStorage.removeItem('token');
     setLogin(false);
     setUser({});
-    navigte('/');
+    navigate('/');
   };
 
   const handleLogin = (email: string, password: string) => {
-    console.log('Token armanezado', localStorage.getItem('token'));
+    console.log('Token armazenado', localStorage.getItem('token'));
     api
       .post('/user/sign-in', { email, password })
       .then(({ data }) => {
@@ -63,7 +64,7 @@ export const UserStorage = ({ children }: any) => {
   };
 
   return (
-    <UserContext.Provider value={{ login, user, handleLogin, logOut, navigte }}>
+    <UserContext.Provider value={{ login, user, handleLogin, logOut }}>
       {children}
     </UserContext.Provider>
   );

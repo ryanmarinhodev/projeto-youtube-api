@@ -31,6 +31,12 @@ export const DropDownMenuContainer = styled.div`
   }
 `;
 
+export const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
 export const ProfileLetter = styled.div`
   width: 50px;
   height: 50px;
@@ -42,10 +48,16 @@ export const ProfileLetter = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin-bottom: 15px;
+  margin-right: 15px;
 `;
 
-export const MenuItemDropDown = styled.li`
+export const LetterChannel = styled.h3`
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export const MenuItem = styled.li`
   display: flex;
   align-items: center;
   padding: 10px;

@@ -41,7 +41,6 @@ function CreateUser() {
       alert('Usuário criado com sucesso');
 
       handleLogin(email, password);
-      //navigate('/login');
       // Limpa os campos após a criação do usuário
       setName('');
       setEmail('');

@@ -1,5 +1,12 @@
 import React, { useContext } from 'react';
-import { DropDownMenuContainer, ProfileLetter, MenuItem, Icon } from './styles';
+import {
+  DropDownMenuContainer,
+  MenuItem,
+  ProfileLetter,
+  Icon,
+  LetterChannel,
+  ProfileContainer,
+} from './styles';
 import { UserContext } from '../../contexts/contextApi';
 import logOutImage from '../../assets/logout.png';
 import Videos from '../../components/Menu/icons/video (1).png';
@@ -10,20 +17,22 @@ interface DropDownMenuProps {
 }
 
 const DropDownMenu: React.FC<DropDownMenuProps> = ({ isOpen, logOut }) => {
-  const { login, userName } = useContext(UserContext);
+  const { login, user } = useContext(UserContext);
 
   if (!login) return null;
 
   // Pegando a primeira letra do nome para o perfil
-  const firstLetter = userName ? userName.charAt(0).toUpperCase() : '';
+  const firstLetter = user?.nome ? user.nome.charAt(0).toUpperCase() : '';
 
   return (
     <DropDownMenuContainer className={isOpen ? 'open' : 'closed'}>
       <ul>
         {/* Letra do Nome como Avatar */}
-        <ProfileLetter>{firstLetter}</ProfileLetter>
+        <ProfileContainer>
+          <ProfileLetter>{firstLetter}</ProfileLetter>
+          <LetterChannel>{user.nome}</LetterChannel>
+        </ProfileContainer>
 
-        {/* Ícones e Itens de Menu */}
         <MenuItem>
           <Icon>
             <img src={Videos} alt="Seus Vídeos" />
