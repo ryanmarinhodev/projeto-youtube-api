@@ -19,11 +19,15 @@ interface VideoComponentProps {
 }
 
 function VideoComponent({ video }: VideoComponentProps) {
+  const firstLetterChannel = video?.channel
+    ? video.channel.charAt(0).toUpperCase()
+    : '';
+
   return (
     <Container>
       <ImageBanner src={video.image} alt={`Thumbnail de ${video.title}`} />
       <TitleContainer>
-        <ChannelImage>RM</ChannelImage>
+        <ChannelImage>{firstLetterChannel}</ChannelImage>
         <TextContainer>
           <Title>{video.title}</Title>
           <TextCard>{video.channel}</TextCard>
