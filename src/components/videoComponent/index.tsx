@@ -28,7 +28,8 @@ function VideoComponent({ video }: VideoComponentProps) {
           <Title>{video.title}</Title>
           <TextCard>{video.channel}</TextCard>
           <TextCard>
-            {video.views} visualizações - {video.time}
+            {video.views}
+            {video.time}
           </TextCard>
         </TextContainer>
       </TitleContainer>

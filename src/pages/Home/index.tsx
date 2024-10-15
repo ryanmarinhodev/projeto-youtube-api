@@ -12,6 +12,39 @@ interface Video {
   image: string;
 }
 
+// Função para formatar o número de visualizações
+function formatViews(views: number) {
+  if (views >= 1000000) {
+    return `${(views / 1000000).toFixed(0)} milhões de visualizações`;
+  } else if (views >= 1000) {
+    return `${(views / 1000).toFixed(0)} mil visualizações`;
+  } else {
+    return `${views} visualizações`;
+  }
+}
+
+// Função para formatar o tempo de upload
+function formatTime(publishedAt: string) {
+  const today = new Date();
+  const publishedDate = new Date(publishedAt);
+  const differenceInTime = today.getTime() - publishedDate.getTime();
+  const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24)); // Converter para dias
+
+  if (differenceInDays === 0) {
+    return ' - hoje';
+  } else if (differenceInDays === 1) {
+    return 'enviado há 1 dia';
+  } else if (differenceInDays < 7) {
+    return `enviado há ${differenceInDays} dias`;
+  } else {
+    return publishedDate.toLocaleDateString('pt-BR', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  }
+}
+
 function HomePage() {
   const { openMenu } = useContext(MenuContext);
   const [videos, setVideos] = useState<Video[]>([]);
@@ -28,8 +61,8 @@ function HomePage() {
         const videoData: Video[] = response.data.items.map((item: any) => ({
           title: item.snippet.title,
           channel: item.snippet.channelTitle,
-          views: 'número de visualizações',
-          time: 'tempo de upload',
+          views: formatViews(item.statistics.viewCount), // Chama a função para formatar as views
+          time: formatTime(item.snippet.publishedAt), // Chama a função para formatar o tempo
           image: item.snippet.thumbnails.medium.url,
         }));
         setVideos(videoData);
