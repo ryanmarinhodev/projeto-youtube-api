@@ -85,17 +85,25 @@ function HomeMenu() {
   return (
     <Container openMenu={openMenu}>
       {menuData.map((section) => (
-        <div key={section.id}>
-          {section.items.map((item) => (
-            <MenuItem
-              key={item.id}
-              openMenu={openMenu}
-              onClick={() => navigate(item.link)}
-            >
-              <ButtonIcon alt={item.label} src={item.icon} />
-              <span>{item.label}</span>
-            </MenuItem>
-          ))}
+        <div
+          key={section.id}
+          className={section.section === 'Seção 1' ? 'Principais' : ''}
+        >
+          {openMenu || section.id === 1 ? (
+            <>
+              {section.items.map((item) => (
+                <MenuItem
+                  key={item.id}
+                  openMenu={openMenu}
+                  onClick={() => navigate(item.link)}
+                >
+                  <ButtonIcon alt={item.label} src={item.icon} />
+                  <span>{item.label}</span>
+                </MenuItem>
+              ))}
+            </>
+          ) : null}
+
           <Divider openMenu={openMenu} />
         </div>
       ))}

@@ -23,7 +23,6 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
   margin: 0.2rem 0;
   min-height: ${({ openMenu }) => (openMenu ? '45px' : '70px')};
   border-radius: 10px;
-  cursor: pointer;
   padding: 2px 15px;
   box-sizing: border-box;
   flex-direction: ${({ openMenu }) => (openMenu ? 'row' : 'column')};
@@ -33,6 +32,7 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
     margin-left: ${({ openMenu }) => (openMenu ? '20px' : '0px')};
     font-size: ${({ openMenu }) => (openMenu ? '16px' : '12px')};
   }
+  cursor: pointer;
 
   &:hover {
     background-color: #f2f2f2;
