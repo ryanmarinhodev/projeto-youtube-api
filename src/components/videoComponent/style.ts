@@ -29,6 +29,7 @@ export const ChannelImage = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: calc(100% - 50px);
 `;
 
 export const Title = styled.span`

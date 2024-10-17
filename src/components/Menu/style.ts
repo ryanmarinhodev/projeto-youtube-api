@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 export const Container = styled.div<{ openMenu: boolean }>`
   width: ${({ openMenu }) => (openMenu ? '250px' : '100px')};
-  height: auto; /* Deixa a borda como footer, caso precise tirar só deixar 100vh */
+  height: 100vh;
   box-sizing: border-box;
-  padding: 5px 10px 10px 5px;
+  padding: 0px 10px 10px 5px;
   display: flex;
   align-items: ${({ openMenu }) => (openMenu ? 'normal' : 'center')};
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   transition: width 0.3s ease;
-  position: static;
+  position: fixed;
   top: 55px;
+  z-index: 10;
 `;
 
 export const MenuItem = styled.div<{ openMenu: boolean }>`
@@ -27,7 +28,6 @@ export const MenuItem = styled.div<{ openMenu: boolean }>`
   box-sizing: border-box;
   flex-direction: ${({ openMenu }) => (openMenu ? 'row' : 'column')};
   justify-content: ${({ openMenu }) => (openMenu ? 'flex-start' : 'center')};
-
   span {
     font-weight: ${({ openMenu }) => (openMenu ? '600' : '400')};
     margin-left: ${({ openMenu }) => (openMenu ? '20px' : '0px')};
