@@ -34,7 +34,6 @@ function Header() {
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
-    console.log('Toggle funcionando', !isOpen);
   };
 
   const firstLetter = user?.nome ? user.nome.charAt(0).toUpperCase() : '';
