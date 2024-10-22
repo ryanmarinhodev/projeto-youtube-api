@@ -11,6 +11,7 @@ import Login from './login';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateUser from './login/createUser';
 import { CreateUserStorage } from './contexts/createUserContext';
+import { MenuDropModal } from 'contexts/dropDownContext';
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
             element={
               <MenuUserContext>
                 <div className="App">
-                  <Header />
+                  <MenuDropModal>
+                    <Header />
+                  </MenuDropModal>
                   <div style={{ width: '100%', display: 'flex' }}>
                     <Menu />
                     <div

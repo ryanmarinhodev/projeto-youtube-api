@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import {
   Container,
   LogoContainer,
@@ -23,6 +23,7 @@ import MenuContext from '../../contexts/menuContext';
 import { UserContext } from '../../contexts/contextApi';
 import DropDownMenu from '../../login/dropDownMenu/index';
 import LoginImg from '../../assets/login-icon.png';
+import { DropDown } from 'contexts/dropDownContext';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
@@ -30,11 +31,28 @@ function Header() {
   const navigate = useNavigate();
 
   // Estado para controlar o DropDown
-  const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const { isOpen, setIsOpen, handleToggle } = useContext(DropDown);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [isOpen, setIsOpen]);
 
   const firstLetter = user?.nome ? user.nome.charAt(0).toUpperCase() : '';
 
@@ -66,7 +84,6 @@ function Header() {
         </ButtonContainer>
       </SearchContainer>
 
-      {/* Novo contêiner para agrupar os botões */}
       <ButtonGroup>
         <HeaderButton login={login}>
           <ButtonContainer margin="0 0 0 10px">
@@ -77,7 +94,11 @@ function Header() {
           </ButtonContainer>
 
           {login && (
-            <ButtonContainer margin="0 0 0 10px" onClick={handleToggle}>
+            <ButtonContainer
+              margin="0 0 0 10px"
+              onClick={handleToggle}
+              ref={modalRef}
+            >
               <span onClick={handleToggle}>{firstLetter}</span>
               {isOpen && <DropDownMenu isOpen={isOpen} logOut={logOut} />}
             </ButtonContainer>
