@@ -32,11 +32,14 @@ function CreateUser() {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:4000/user/sign-up', {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        'https://nodejs-study-production.up.railway.app/user/sign-up',
+        {
+          name,
+          email,
+          password,
+        }
+      );
       console.log('Usuário criado:', response.data);
       alert('Usuário criado com sucesso');
 

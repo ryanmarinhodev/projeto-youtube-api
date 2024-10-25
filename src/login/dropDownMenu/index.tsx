@@ -21,8 +21,8 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ isOpen, logOut }) => {
 
   if (!login) return null;
 
+  //teste de commit
   // Pegando a primeira letra do nome para o perfil e colocando no modal
-
   const firstLetter = user?.nome ? user.nome.charAt(0).toUpperCase() : '';
 
   return (
