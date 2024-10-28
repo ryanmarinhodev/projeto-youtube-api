@@ -8,6 +8,7 @@ export const Container = styled.div<ContainerProps>`
   width: ${({ openMenu }) =>
     openMenu ? 'calc(100% - 300px)' : 'calc(100% - 120px)'};
   margin-left: ${({ openMenu }) => (openMenu ? '240px' : '120px')};
+  margin-top: 50px;
   max-width: 1600px;
   display: grid;
   grid-template-columns: ${({ openMenu }) =>

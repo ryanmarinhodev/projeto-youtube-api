@@ -3,15 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.header`
   width: 100%;
   height: 55px;
-  background-color: #fff;
+  background-color: white;
   padding: 0 16px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
   position: sticky;
   top: 0px;
+  z-index: 1000; /* Eleva o header acima de outros elementos */
 `;
 
 export const LogoContainer = styled.div`
@@ -102,14 +102,28 @@ export const LoginButton = styled.button`
   }
 
   img {
-    margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+    margin-right: 8px;
     width: 20px;
     height: 20px;
   }
 `;
 
-// Novo estilo para o contêiner que agrupa os botões
 export const ButtonGroup = styled.div`
-  display: flex; /* Usar flexbox para alinhar os botões corretamente */
-  align-items: center; /* Alinhar verticalmente os botões */
+  display: flex;
+  align-items: center;
+`;
+
+export const CarouselContainer = styled.div<{ openMenu: boolean }>`
+  max-width: ${({ openMenu }) =>
+    openMenu ? 'calc(100% - 270px)' : 'calc(100% - 100px)'};
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pode ser center se necessário */
+  background-color: white;
+  margin-left: ${({ openMenu }) => (openMenu ? '270px' : '100px')};
+  position: fixed;
+  z-index: 900;
+  overflow: hidden;
 `;
