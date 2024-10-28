@@ -1,6 +1,6 @@
 // Carousel.tsx
 import React, { useRef } from 'react';
-import { CarouselContainer, ArrowButton, ItemsContainer, Item } from './styles'; // Ajuste o caminho conforme necessário
+import { CarouselWrapper, ArrowButton, ItemsContainer, Item } from './styles'; // Ajuste o caminho conforme necessário
 
 interface CarouselItem {
   id: number;
@@ -63,15 +63,17 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <CarouselContainer openMenu={false}>
+    <>
       <ScrollButton direction="left" onClick={() => handleScroll('left')} />
-      <ItemsContainer ref={containerRef}>
-        {carouselItems.map((item) => (
-          <Item key={item.id}>{item.name}</Item>
-        ))}
-      </ItemsContainer>
+      <CarouselWrapper openMenu={false}>
+        <ItemsContainer ref={containerRef}>
+          {carouselItems.map((item) => (
+            <Item key={item.id}>{item.name}</Item>
+          ))}
+        </ItemsContainer>
+      </CarouselWrapper>
       <ScrollButton direction="right" onClick={() => handleScroll('right')} />
-    </CarouselContainer>
+    </>
   );
 };
 
