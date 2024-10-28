@@ -11,7 +11,7 @@ import {
   HeaderButton,
   LoginButton,
   ButtonGroup,
-  CarouselContainer,
+  CarouselContainerPai,
 } from './style';
 import HamburguerIcon from '../../assets/hamburger.png';
 import Logo from '../../assets/YouTube-Logo.png';
@@ -120,9 +120,9 @@ function Header() {
           )}
         </ButtonGroup>
       </Container>
-      <CarouselContainer openMenu={openMenu}>
+      <CarouselContainerPai openMenu={openMenu}>
         <Carousel />
-      </CarouselContainer>
+      </CarouselContainerPai>
     </>
   );
 }

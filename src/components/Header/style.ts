@@ -113,7 +113,7 @@ export const ButtonGroup = styled.div`
   align-items: center;
 `;
 
-export const CarouselContainer = styled.div<{ openMenu: boolean }>`
+export const CarouselContainerPai = styled.div<{ openMenu: boolean }>`
   max-width: ${({ openMenu }) =>
     openMenu ? 'calc(100% - 270px)' : 'calc(100% - 100px)'};
   width: 100%;

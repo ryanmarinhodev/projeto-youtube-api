@@ -12,7 +12,7 @@ export const ArrowButton = styled.button<{ position: 'left' | 'right' }>`
   ${({ position }) => (position === 'left' ? 'left: 0;' : 'right: 0;')}
 `;
 
-export const CarouselWrapper = styled.div<{ openMenu: boolean }>`
+export const CarouselWrapperFilho = styled.div<{ openMenu: boolean }>`
   width: ${({ openMenu }) => (openMenu ? '75%' : '84%')};
   height: 50px;
   display: flex;
