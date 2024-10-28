@@ -121,7 +121,7 @@ export const CarouselContainer = styled.div<{ openMenu: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between; /* Pode ser center se necessário */
-  background-color: red;
+  background-color: white;
   margin-left: ${({ openMenu }) => (openMenu ? '270px' : '100px')};
   position: fixed;
   z-index: 900;

@@ -5,7 +5,7 @@ export const ArrowButton = styled.button<{ position: 'left' | 'right' }>`
   border: none;
   cursor: pointer;
   font-size: 24px;
-  padding: 0 20px;
+  padding: 0 70px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -13,12 +13,12 @@ export const ArrowButton = styled.button<{ position: 'left' | 'right' }>`
 `;
 
 export const CarouselWrapper = styled.div<{ openMenu: boolean }>`
-  width: 84%;
+  width: ${({ openMenu }) => (openMenu ? '75%' : '84%')};
   height: 50px;
   display: flex;
   align-items: center;
-  background-color: yellow;
-  margin-left: ${({ openMenu }) => (openMenu ? '270px' : '100px')};
+  background-color: white;
+  margin: ${({ openMenu }) => (openMenu ? '0 100px 0 100px' : '100px')};
   position: fixed;
   z-index: 900;
   overflow: hidden;
@@ -29,7 +29,7 @@ export const ItemsContainer = styled.div`
   gap: 10px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 10px 50px; /* Espaço para as setas */
+  padding: 10px 10px; /* Espaço para as setas */
   flex-wrap: nowrap;
   max-width: 100%;
   white-space: nowrap;
