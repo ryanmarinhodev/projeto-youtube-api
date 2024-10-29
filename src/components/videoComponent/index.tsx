@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   ChannelImage,
   Container,
@@ -7,6 +8,7 @@ import {
   Title,
   TitleContainer,
 } from './style';
+import MenuContext from 'contexts/menuContext';
 
 interface VideoComponentProps {
   video: {
@@ -23,9 +25,14 @@ function VideoComponent({ video }: VideoComponentProps) {
     ? video.channel.charAt(0).toUpperCase()
     : '';
 
+  const { openMenu } = useContext(MenuContext);
   return (
     <Container>
-      <ImageBanner src={video.image} alt={`Thumbnail de ${video.title}`} />
+      <ImageBanner
+        src={video.image}
+        alt={`Thumbnail de ${video.title}`}
+        openMenu={openMenu}
+      />
       <TitleContainer>
         <ChannelImage>{firstLetterChannel}</ChannelImage>
         <TextContainer>
