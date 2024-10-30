@@ -26,7 +26,7 @@ export const CarouselWrapperFilho = styled.div<{ openMenu: boolean }>`
 
 export const ItemsContainer = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 15px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px 10px; /* Espaço para as setas */
@@ -42,7 +42,7 @@ export const ItemsContainer = styled.div`
 export const Item = styled.div`
   padding: 8px 16px;
   background-color: #f1f1f1;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 

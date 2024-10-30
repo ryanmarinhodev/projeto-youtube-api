@@ -13,7 +13,6 @@ interface CarouselItem {
   name: string;
 }
 
-// Lista de itens do carrossel
 const carouselItems: CarouselItem[] = [
   { id: 1, name: 'Tudo' },
   { id: 2, name: 'Games' },
@@ -58,7 +57,11 @@ const ScrollButton: React.FC<{
   </ArrowButton>
 );
 
-const Carousel: React.FC = () => {
+interface CarouselProps {
+  categorySelection: (id: number) => void;
+}
+
+const Carousel: React.FC<CarouselProps> = ({ categorySelection }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { openMenu } = useContext(MenuContext);
 
@@ -75,7 +78,9 @@ const Carousel: React.FC = () => {
       <CarouselWrapperFilho openMenu={openMenu}>
         <ItemsContainer ref={containerRef}>
           {carouselItems.map((item) => (
-            <Item key={item.id}>{item.name}</Item>
+            <Item key={item.id} onClick={() => categorySelection(item.id)}>
+              {item.name}
+            </Item>
           ))}
         </ItemsContainer>
       </CarouselWrapperFilho>
