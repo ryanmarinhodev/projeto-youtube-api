@@ -3,7 +3,6 @@ import axios from 'axios';
 import VideoComponent from '../../components/videoComponent';
 import { Container } from './styles';
 import MenuContext from '../../contexts/menuContext';
-import { CategoryContext } from 'contexts/categoryContext';
 
 interface Video {
   title: string;
@@ -38,8 +37,6 @@ function formatTime(publishedAt: string) {
 }
 function HomePage() {
   const { openMenu } = useContext(MenuContext);
-
-  const { categoryIds } = useContext(CategoryContext);
 
   const [videos, setVideos] = useState<Video[]>([]);
 
