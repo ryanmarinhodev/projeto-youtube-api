@@ -4,10 +4,15 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const ImageBanner = styled.img`
-  width: 100%;
+export const ImageBanner = styled.img<{ openMenu: boolean }>`
+  width: ${({ openMenu }) => (openMenu ? '100%' : '100%')};
   height: 210px;
   border-radius: 12px;
+
+  @media (min-width: 1600px) {
+    width: 93%;
+    height: auto;
+  }
 `;
 
 export const TitleContainer = styled.div`

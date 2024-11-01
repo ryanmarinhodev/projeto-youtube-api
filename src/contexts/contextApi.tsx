@@ -9,7 +9,7 @@ export const UserStorage = ({ children }: any) => {
   const [user, setUser] = useState<any>({}); // Tipo atualizado para garantir que você possa armazenar o nome corretamente
   const [token, setToken] = useState(localStorage.getItem('token') as string);
   const navigate = useNavigate();
-
+  console.log(user);
   // Mudança da rota após login estar correto
   useEffect(() => {
     if (login) {

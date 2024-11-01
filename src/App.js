@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CreateUser from './login/createUser';
 import { CreateUserStorage } from './contexts/createUserContext';
 import { MenuDropModal } from 'contexts/dropDownContext';
+import { CategoryProvider } from 'contexts/categoryContext';
 
 function App() {
   return (
@@ -34,29 +35,31 @@ function App() {
             path="/*"
             element={
               <MenuUserContext>
-                <div className="App">
-                  <MenuDropModal>
-                    <Header />
-                  </MenuDropModal>
-                  <div style={{ width: '100%', display: 'flex' }}>
-                    <Menu />
-                    <div
-                      style={{
-                        width: '100%',
-                        padding: '50px 70px',
-                        boxSizing: 'border-box',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/shorts" element={<Shorts />} />
-                        <Route path="/inscricoes" element={<Inscricoes />} />
-                        <Route path="/biblioteca" element={<Libery />} />
-                      </Routes>
+                <CategoryProvider>
+                  <div className="App">
+                    <MenuDropModal>
+                      <Header />
+                    </MenuDropModal>
+                    <div style={{ width: '100%', display: 'flex' }}>
+                      <Menu />
+                      <div
+                        style={{
+                          width: '100%',
+                          padding: '50px 70px',
+                          boxSizing: 'border-box',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <Routes>
+                          <Route path="/" element={<HomePage />} />
+                          <Route path="/shorts" element={<Shorts />} />
+                          <Route path="/inscricoes" element={<Inscricoes />} />
+                          <Route path="/biblioteca" element={<Libery />} />
+                        </Routes>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </CategoryProvider>
               </MenuUserContext>
             }
           />
