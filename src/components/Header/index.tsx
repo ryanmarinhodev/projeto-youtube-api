@@ -26,22 +26,11 @@ import DropDownMenu from '../../login/dropDownMenu/index';
 import LoginImg from '../../assets/login-icon.png';
 import { DropDown } from 'contexts/dropDownContext';
 import Carousel from '../CarrouselItem/index';
-import { CategoryContext } from 'contexts/categoryContext';
 
 function Header() {
   const { openMenu, setOpenMenu } = useContext(MenuContext);
   const { login, logOut, user } = useContext(UserContext);
   const navigate = useNavigate();
-  const { categoryIds, setCategoryIds } = useContext(CategoryContext);
-
-  //categorias
-  const categoryFunction = (id: number) => {
-    if (categoryIds.includes(id)) {
-      setCategoryIds(categoryIds);
-    } else {
-      setCategoryIds([...categoryIds, id]);
-    }
-  };
 
   // Estado para controlar o DropDown
   const { isOpen, setIsOpen, handleToggle } = useContext(DropDown);
@@ -131,7 +120,7 @@ function Header() {
         </ButtonGroup>
       </Container>
       <CarouselContainerPai openMenu={openMenu}>
-        <Carousel categorySelection={categoryFunction} />
+        <Carousel />
       </CarouselContainerPai>
     </>
   );
