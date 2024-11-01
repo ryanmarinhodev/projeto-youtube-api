@@ -3,6 +3,7 @@ import axios from 'axios';
 import VideoComponent from '../../components/videoComponent';
 import { Container } from './styles';
 import MenuContext from '../../contexts/menuContext';
+import { CategoryContext } from 'contexts/categoryContext';
 
 interface Video {
   title: string;
@@ -10,6 +11,7 @@ interface Video {
   views: string;
   time: string;
   image: string;
+  categoryId?: string;
 }
 function formatViews(views: number) {
   if (views >= 1000000) {
@@ -37,17 +39,20 @@ function formatTime(publishedAt: string) {
 }
 function HomePage() {
   const { openMenu } = useContext(MenuContext);
+  const { categoryIds } = useContext(CategoryContext);
 
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
     const API_KEY = 'AIzaSyANXYiXCORERhcMf5hKMqcXFolkC44Ms4Q';
-    const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=BR&maxResults=50&key=${API_KEY}`;
+    const categoryId = categoryIds[0] || '';
+    const API_URL = categoryId
+      ? `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=BR&maxResults=50&videoCategoryId=${categoryId}&key=${API_KEY}`
+      : `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=BR&maxResults=50&key=${API_KEY}`;
 
     const fetchData = async () => {
       try {
         const response = await axios.get(API_URL);
-        console.log(response.data);
 
         const videoData: Video[] = response.data.items.map((item: any) => ({
           title: item.snippet.title,
@@ -63,7 +68,7 @@ function HomePage() {
     };
 
     fetchData();
-  }, []);
+  }, [categoryIds]);
   return (
     <div>
       <Container openMenu={openMenu}>
